@@ -1,4 +1,17 @@
 package com.project.vehiclerentingsystem.repository;
 
-public class BookingRepo {
+import com.project.vehiclerentingsystem.entity.Bookings;
+import com.project.vehiclerentingsystem.entity.Vehicle;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+
+@Repository
+public interface BookingRepo extends JpaRepository<Bookings, Integer> {
+    @Query("SELECT vehicle FROM Bookings b WHERE b.startTime <= ?1 OR b.endTime >= ?2")
+    List<Vehicle> bookedVehicle(LocalDateTime startTime,LocalDateTime endTime);
 }

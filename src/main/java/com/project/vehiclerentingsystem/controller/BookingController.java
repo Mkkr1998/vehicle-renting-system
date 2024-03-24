@@ -2,6 +2,7 @@ package com.project.vehiclerentingsystem.controller;
 
 import com.project.vehiclerentingsystem.entity.Bookings;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,4 +25,5 @@ public class BookingController {
         //
         //} JSON TO CHECK
     }
+
 }

@@ -1,11 +1,9 @@
 package com.project.vehiclerentingsystem.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -14,8 +12,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+@ToString
 public class Bookings {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int bookingId;
     @JoinColumn(name = "branch_id")
     @ManyToOne(cascade = CascadeType.ALL)
