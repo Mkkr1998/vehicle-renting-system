@@ -1,0 +1,28 @@
+1. book vehicle:
+        localhost:8080/bookvehicle
+{
+        "branch": {
+                 "branchName": "dhanbad"
+                },
+        "vehicle":{
+                     "type": "car",
+                    "carType": "suv",
+                    "rate": 80,
+                    "branch": {
+                    "branchName": "dhanbad"
+                    }
+                },
+        "startTime":"2024-03-18T10:00",
+        "endTime":"2024-03-18T14:00"
+}
+
+2.add branch and car
+        localhost:8080/branch
+        {
+            "branch":{
+                "branchName":"dhanbad"
+            },
+            "type":"car",
+            "carType":"suv",
+            "rate":80
+        }

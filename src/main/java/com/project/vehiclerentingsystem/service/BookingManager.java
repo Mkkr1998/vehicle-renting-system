@@ -38,7 +38,7 @@ public class BookingManager {
                     return false;
                 }).collect(Collectors.toList());
     }
-    public Bookings bookCar(Vehicle vehicle,LocalDateTime startTime, LocalDateTime endTime){
+    public Bookings bookVehicle(Vehicle vehicle,LocalDateTime startTime, LocalDateTime endTime){
         if(ifAvailable(vehicle,startTime,endTime).size()>0){
             Vehicle avVehicle = ifAvailable(vehicle,startTime,endTime).get(0);
             Bookings bookings = Bookings.builder()

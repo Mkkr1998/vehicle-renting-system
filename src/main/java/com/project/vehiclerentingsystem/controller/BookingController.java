@@ -1,6 +1,9 @@
 package com.project.vehiclerentingsystem.controller;
 
 import com.project.vehiclerentingsystem.entity.Bookings;
+import com.project.vehiclerentingsystem.entity.Branch;
+import com.project.vehiclerentingsystem.entity.Vehicle;
+import com.project.vehiclerentingsystem.service.BookingManager;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +13,11 @@ import java.time.LocalDateTime;
 
 @RestController
 public class BookingController {
+
+    private BookingManager bookingManager;
+    BookingController(BookingManager bookingManager){
+        this.bookingManager=bookingManager;
+    }
     @GetMapping("/check")
     public Boolean checkLocalTimeIsWorking(@RequestBody Bookings bookings){
         LocalDateTime t1=bookings.getStartTime();
@@ -26,4 +34,9 @@ public class BookingController {
         //} JSON TO CHECK
     }
 
+    @PutMapping("/bookvehicle")
+    public Bookings doBooking(@RequestBody Bookings bookings){
+        Vehicle vehicle=bookings.getVehicle();
+        return bookingManager.bookVehicle(vehicle,bookings.getStartTime(),bookings.getEndTime());
+    }
 }
