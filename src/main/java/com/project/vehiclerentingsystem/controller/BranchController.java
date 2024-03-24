@@ -20,7 +20,6 @@ public class BranchController {
     }
     @PostMapping("/branch")
     public Vehicle addBranchAndVehicle(@RequestBody Vehicle vehicle){
-        System.out.println(vehicle.toString());
         if(branchManager.getBranch(vehicle.getBranch().getBranchName())!=null){
             Branch branch=branchManager.getBranch(vehicle.getBranch().getBranchName());
             vehicle.setBranch(branch);

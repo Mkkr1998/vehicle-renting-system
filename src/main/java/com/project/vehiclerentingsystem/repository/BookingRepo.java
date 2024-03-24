@@ -12,6 +12,6 @@ import java.util.List;
 
 @Repository
 public interface BookingRepo extends JpaRepository<Bookings, Integer> {
-    @Query("SELECT vehicle FROM Bookings b WHERE b.startTime <= ?1 OR b.endTime >= ?2")
+    @Query("SELECT vehicle FROM Bookings b WHERE b.startTime BETWEEN ?1 AND ?2 OR b.endTime BETWEEN ?1 AND ?2")
     List<Vehicle> bookedVehicle(LocalDateTime startTime,LocalDateTime endTime);
 }

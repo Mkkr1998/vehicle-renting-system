@@ -27,6 +27,7 @@ public class BookingManager {
 
     public List<Vehicle> ifAvailable(Vehicle vehicle,LocalDateTime startTime, LocalDateTime endTime){
         List<Vehicle> set= bookedVehicle(startTime,endTime);
+        System.out.println(set.toString());
         return vehicleManager.getAllVehicle().stream().filter(vehicle1 -> !set.contains(vehicle1))
                 .filter(vehicle1 -> vehicle1.getBranch().getBranchName().equals(vehicle.getBranch().getBranchName()))
                 .filter(vehicle2 -> {
