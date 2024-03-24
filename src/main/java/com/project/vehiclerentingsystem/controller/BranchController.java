@@ -6,6 +6,8 @@ import com.project.vehiclerentingsystem.service.BranchManager;
 import com.project.vehiclerentingsystem.service.VehicleManager;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class BranchController {
 
@@ -33,5 +35,10 @@ public class BranchController {
             vehicle.setBranch(branch);
         }
         return vehicleManager.addVehicleInBranch(vehicle);
+    }
+
+    @GetMapping("/vehicle")
+    public List<Vehicle> getAllVehicle(){
+        return vehicleManager.getAllVehicle();
     }
 }

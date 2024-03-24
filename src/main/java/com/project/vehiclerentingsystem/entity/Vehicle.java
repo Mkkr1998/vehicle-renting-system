@@ -19,5 +19,6 @@ public class Vehicle {
     private Branch branch;
     private String type;
     private String carType;
+    private int rate;
 
 }
