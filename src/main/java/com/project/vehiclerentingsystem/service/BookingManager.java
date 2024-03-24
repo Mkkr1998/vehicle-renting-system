@@ -6,6 +6,7 @@ import com.project.vehiclerentingsystem.repository.BookingRepo;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,12 +21,12 @@ public class BookingManager {
         this.vehicleManager=vehicleManager;
     }
 
-    public HashSet<Vehicle> bookedVehicle(LocalDateTime startTime, LocalDateTime endTime){
-        return  new HashSet<>(bookingRepo.bookedVehicle(startTime,endTime));
+    public List<Vehicle> bookedVehicle(LocalDateTime startTime, LocalDateTime endTime){
+        return  bookingRepo.bookedVehicle(startTime,endTime);
     }
 
     public List<Vehicle> ifAvailable(Vehicle vehicle,LocalDateTime startTime, LocalDateTime endTime){
-        HashSet<Vehicle> set= bookedVehicle(startTime,endTime);
+        List<Vehicle> set= bookedVehicle(startTime,endTime);
         return vehicleManager.getAllVehicle().stream().filter(vehicle1 -> !set.contains(vehicle1))
                 .filter(vehicle1 -> vehicle1.getBranch().getBranchName().equals(vehicle.getBranch().getBranchName()))
                 .filter(vehicle2 -> {
